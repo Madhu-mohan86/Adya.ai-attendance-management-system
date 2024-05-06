@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Madhu-mohan86/Adya.ai-attendance-management-system/issues"
   },
-  "homepage": "https://github.com/Madhu-mohan86/Adya.ai-attendance-management-system#readme"
+  "homepage": "https://github.com/Madhu-mohan86/Adya.ai-attendance-management-system#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.3"
+  }
 }
