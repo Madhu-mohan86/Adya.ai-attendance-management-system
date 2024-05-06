@@ -1,0 +1,19 @@
+{
+  "name": "attendance-management-system",
+  "version": "1.0.0",
+  "description": "Attendance Management System with Docker(DevOps)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Madhu-mohan86/Adya.ai-attendance-management-system.git"
+  },
+  "author": "MadhuMohan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Madhu-mohan86/Adya.ai-attendance-management-system/issues"
+  },
+  "homepage": "https://github.com/Madhu-mohan86/Adya.ai-attendance-management-system#readme"
+}
