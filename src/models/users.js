@@ -1,22 +1,63 @@
 import mongoose  from "mongoose";
 
-const user = new mongoose.Schema({
+
+const teacher = new mongoose.Schema({
     name:{
         type:String,
         required:true,
     },
-    role:{
-        type:String,
+    class:{
+        type:Array[String],
         required:true,
-        enum:['Teacher','Student']
     },
-    password:{
+    roll_no:{
         type:String,
         required:true,
+        unique: true
     }
 })
-user.index({name:1,role:1})
 
-const Users=mongoose.model('Users',user);
+const student = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true,
+    },
+    class:{
+        type:String,
+        required:true,
+    },
+    roll_no:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    percentage:{
+        type:String,
+        required:false
+    },
+    attendance: [{
+        date: {
+            type: Date,
+            required: true,
+            unique:true
+        },
+        present: {
+            type: Boolean,
+            default: false,
+        }
+    }],
+    total_days:{
+        type:Number,
+        required:true,
+    },
+})
 
-export default Users
+
+teacher.index({name:1,role_no:1,class:1,})
+student.index({name:1,roll_no:1,class:1})
+
+const Teachers=mongoose.model('Teachers',teacher);
+const Students=mongoose.model('Students',student);
+
+
+export  {Users,Teachers,Students};
