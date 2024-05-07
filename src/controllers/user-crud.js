@@ -1,13 +1,26 @@
 import { Students,Teachers } from "../models/users.js";
 
 const AddStudent = (name, studentClass, roll_no,days) => {
+    try{
     let student_new=new Students({
         name:name,
         class:studentClass,
         roll_no:roll_no,
         total_days:days
         })
-    student_new.save()
+   return student_new.save().then((stat)=>{
+        return "Added Student"
+   }).catch((err)=>{
+    if(err.code===11000){
+        throw new Error("Student Already Exists");
+        }
+        else{
+            throw new Error(err.message);
+        }
+   })
+    }catch{
+        throw new Error("Error in Adding Student")
+    }
 };
 
 const AddTeacher = (name, studentClass, roll_no) => {
@@ -16,8 +29,18 @@ const AddTeacher = (name, studentClass, roll_no) => {
             class:studentClass,
             roll_no:roll_no
             })
-        student_new.save()
-        return "added teacher"
+        return student_new.save()
+        .then((stat) => {
+            return "Added Teacher"; 
+        })
+        .catch((error) => {
+            if(error.code===11000){
+            throw new Error("Teacher Already Exists");
+            }
+            else{
+                throw new Error(error.message);
+            }
+        });
 };
 
 const RemoveStudent = (roll_no) => {
