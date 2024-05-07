@@ -39,7 +39,6 @@ const student = new mongoose.Schema({
         date: {
             type: Date,
             required: true,
-            unique:true
         },
         present: {
             type: Boolean,
@@ -53,7 +52,8 @@ const student = new mongoose.Schema({
 })
 
 
-teacher.index({name:1,role_no:1,class:1,})
+teacher.index({name:1,role_no:1,class:1})
+student.index({ 'attendance.date': 1 }, { unique: true });
 student.index({name:1,roll_no:1,class:1})
 
 const Teachers=mongoose.model('Teachers',teacher);
