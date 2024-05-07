@@ -89,3 +89,5 @@ const get_attendances=(roll_no)=>{
         return list
      })
 }
+
+export {add_attendace_absent,add_attendace_present,percentage_calculate,get_attendances,remove_day_attendance,change_attendance_absent_to_present,change_attendance_present_to_absent}
