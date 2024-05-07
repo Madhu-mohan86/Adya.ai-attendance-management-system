@@ -1,4 +1,4 @@
-import { Students,Teachers } from "../models/users";
+import { Students,Teachers } from "../models/users.js";
 
 const AddStudent = (name, studentClass, roll_no,days) => {
     let student_new=new Students({
@@ -17,6 +17,7 @@ const AddTeacher = (name, studentClass, roll_no) => {
             roll_no:roll_no
             })
         student_new.save()
+        return "added teacher"
 };
 
 const RemoveStudent = (roll_no) => {

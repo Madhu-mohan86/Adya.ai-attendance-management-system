@@ -7,7 +7,7 @@ const teacher = new mongoose.Schema({
         required:true,
     },
     class:{
-        type:Array[String],
+        type:[String],
         required:true,
     },
     roll_no:{
@@ -60,4 +60,4 @@ const Teachers=mongoose.model('Teachers',teacher);
 const Students=mongoose.model('Students',student);
 
 
-export  {Users,Teachers,Students};
+export  {Teachers,Students};
