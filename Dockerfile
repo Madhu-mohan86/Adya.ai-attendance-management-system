@@ -1,18 +1,17 @@
-FROM --platform=linux/amd64 ubuntu:latest
+FROM node
 
 WORKDIR /attendance-monitoring
 
-RUN apt-get update && apt-get install -y \
-    curl 
-
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
-
-RUN apt-get update && apt-get install -y nodejs
-
-COPY ./src .
-COPY ./.env .
+COPY . .
 
 RUN npm install
 
-CMD ["node","src/main.js"]
+ENV MONGODB_URI='mongodb://localhost:27017'
+
+ENV SECRET_TOKEN=trial
+
+ENV PORT=3002
+
+ENV HOST=0.0.0.0
+
+CMD ["node","./src/main.js"]

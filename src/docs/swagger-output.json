@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Whatsapp Monitoring",
-    "description": "Monitor whatsapp groups",
+    "title": "Attendance Monitoring",
+    "description": "Monitor attendance of students by teachers",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
@@ -251,7 +251,8 @@
         }
       },
       "patch": {
-        "description": "",
+        "summary": "update Attendance",
+        "description": "update attendance ",
         "parameters": [
           {
             "name": "secret-token",

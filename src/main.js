@@ -1,5 +1,7 @@
 import app from "./routes/server.js"
 import SwaggerUI from 'swagger-ui-express'
 import swaggerDocument from './docs/swagger-output.json' assert { type: "json" };
+import { PORT,HOST } from "./utils/config_env.js";
 app.use('/docs',SwaggerUI.serve,SwaggerUI.setup(swaggerDocument))
-app.listen(3000,()=>console.log(`running on port ${3000}`))
+app.listen(PORT,HOST,()=>console.log(`running on port ${PORT} and HOST ${HOST}`))
+

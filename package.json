@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Madhu-mohan86/Adya.ai-attendance-management-system#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.3",

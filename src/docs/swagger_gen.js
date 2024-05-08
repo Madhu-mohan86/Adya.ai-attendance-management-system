@@ -10,8 +10,8 @@ const newDirname = modifiedSegments.join('/');
 console.log(newDirname);
 const doc = {
   info: {
-    title: 'Whatsapp Monitoring',
-    description: 'Monitor whatsapp groups'
+    title: 'Attendance Monitoring',
+    description: 'Monitor attendance of students by teachers'
   },
   host: 'localhost:3000'
 };
