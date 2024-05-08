@@ -4,8 +4,7 @@ const attendances = new mongoose.Schema({
     date: {
         type: String,
         required: true,
-        unique:true,
-        index:true
+        null:true
     },
     present: {
         type: Boolean,
@@ -18,15 +17,18 @@ const teacher = new mongoose.Schema({
     name:{
         type:String,
         required:true,
+        index:true
     },
     class:{
         type:[String],
         required:true,
+        index:true
     },
     roll_no:{
         type:String,
         required:true,
-        unique: true
+        unique: true,
+        index:true
     }
 })
 
@@ -34,15 +36,18 @@ const student = new mongoose.Schema({
     name:{
         type:String,
         required:true,
+        index:true
     },
     class:{
         type:String,
         required:true,
+        index:true
     },
     roll_no:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        index:true
     },
     percentage:{
         type:String,
@@ -56,8 +61,6 @@ const student = new mongoose.Schema({
 })
 
 
-teacher.index({name:1,role_no:1,class:1})
-student.index({name:1,roll_no:1,class:1})
 
 const Teachers=mongoose.model('Teachers',teacher);
 const Students=mongoose.model('Students',student);
