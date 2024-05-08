@@ -44,40 +44,50 @@ const percentage_calculate=async(roll_no)=>{
     var count=0;
     const stud=await Students.findOne({roll_no:roll_no})
         for(let a of stud.attendance){
+            if(a.present==true)
             count+=1
         }
         stud.percentage=(count/stud.total_days)*100
         return stud.save()
 }
 
-const change_attendance_present_to_absent=(roll_no)=>{
-    var today=new Date()
-    Students.findOne({roll_no:roll_no}).then(stud=>{
+const change_attendance_present_to_absent=async(roll_no)=>{
+    var today=new Date().toISOString().slice(0, 10)
+    const stud= await Students.findOne({roll_no:roll_no})
+    console.log(stud)
         for(let a of stud.attendance){
             if (a.date===today){
                 a.present=false
                 break
             }
         }
-        stud.save()
-    })
+        return stud.save().then(async(stud)=>{
+            let cal =await percentage_calculate(roll_no)
+            return "Changed Attendance for roll_no"
+        }). catch((err)=>{
+        console.log(err)
+        })
 }
 
-const change_attendance_absent_to_present=(roll_no)=>{
-    var today=new Date()
-    Students.findOne({roll_no:roll_no}).then(stud=>{
+const change_attendance_absent_to_present=async(roll_no)=>{
+    var today=new Date().toISOString().slice(0, 10)
+    const stud= await Students.findOne({roll_no:roll_no})
         for(let a of stud.attendance){
             if (a.date===today){
                 a.present=true
                 break
             }
         }
-        stud.save()
-    })
+        return stud.save().then(async(stud)=>{
+            let cal =await percentage_calculate(roll_no)
+            return "Changed Attendance for roll_no"
+        }). catch((err)=>{
+        console.log(err)
+        })
 }
 
 const remove_day_attendance=(roll_no)=>{
-    var today=new Date()
+    var today=new Date().toISOString().slice(0, 10)
     Students.findOne({roll_no:roll_no}).then(stud=>{
         const index = stud.attendance.findIndex(a => a.date==today);
             if (index !== -1) {
@@ -93,7 +103,7 @@ const get_attendance=(roll_no)=>{
      })
 }
 
-const get_attendancess=(roll_no)=>{
+const get_attendancess=()=>{
     return Students.find({},{_id:0,name:0,class:0,total_days:0,__v:0}).then(stud=>{
        return stud
      })

@@ -51,21 +51,63 @@ const RemoveTeacher = ( roll_no) => {
     Teachers.findOneAndDelete({roll_no:roll_no})
 };
 
-const UpdateTeacher=(roll_no,class_name=null,name=null)=>{
-    let existingTeacher = Teachers.findOne({ roll_no: roll_no });
-    Teachers.updateOne(
-        { _id: existingTeacher._id },
-        { $addToSet: { class:class_name,name:name } }
-    );
-    existingTeacher.save()
+const UpdateTeacher=async(roll_no,class_name=null,name=null)=>{
+    try{
+        let exisitTeacher = await Teachers.findOne({ roll_no: roll_no });
+        if(!exisitTeacher){
+            throw new Error ("Roll-no not found")
+        }
+        const updateObject = {};
+        if (class_name !== null) {
+            updateObject.class=class_name;
+        }
+    
+        if (name !== null) {
+            updateObject.name = name;
+        }
+        console.log(updateObject)
+    
+        // Update the teacher using updateOne
+       return Teachers.updateOne(
+            { _id: exisitTeacher._id },
+            updateObject
+        ).then((stud)=>{
+           return "Updated details"
+    }).catch((err)=>{
+        throw new Error("Error updating details")
+    })
+    }catch(err){
+        throw new Error(err.message)
+    }
 }
-const UpdateStudent=(roll_no,class_name=null,name=null)=>{
-    let existingTeacher = Students.findOne({ roll_no: roll_no });
-    Teachers.updateOne(
-        { _id: existingTeacher._id },
-        { $addToSet: { class:class_name,name:name } }
-    );
-    existingTeacher.save()
+const UpdateStudent=async(roll_no,class_name=null,name=null)=>{
+    try{
+        let existiStudent = await Students.findOne({ roll_no: roll_no });
+        if(!existiStudent){
+            throw new Error ("Roll-no not found")
+        }
+        const updateObject = {};
+        if (class_name !== null) {
+            updateObject.class=class_name;
+        }
+    
+        if (name !== null) {
+            updateObject.name = name;
+        }
+        console.log(updateObject)
+    
+        // Update the teacher using updateOne
+       return Students.updateOne(
+            { _id: existiStudent._id },
+            updateObject
+        ).then((stud)=>{
+           return "Updated details"
+    }).catch((err)=>{
+        throw new Error("Error updating details")
+    })
+    }catch(err){
+        throw new Error(err.message)
+    }
 }
 
 const GetStudents = () => {
