@@ -1,5 +1,18 @@
 import mongoose  from "mongoose";
 
+const attendances = new mongoose.Schema({
+    date: {
+        type: String,
+        required: true,
+        unique:true,
+        index:true
+    },
+    present: {
+        type: Boolean,
+        default: false,
+    }
+}, { _id: false });
+
 
 const teacher = new mongoose.Schema({
     name:{
@@ -35,25 +48,15 @@ const student = new mongoose.Schema({
         type:String,
         required:false
     },
-    attendance: [{
-        date: {
-            type: Date,
-            required: true,
-        },
-        present: {
-            type: Boolean,
-            default: false,
-        }
-    }],
+    attendance: [attendances],
     total_days:{
         type:Number,
         required:true,
-    },
+    }
 })
 
 
 teacher.index({name:1,role_no:1,class:1})
-student.index({ 'attendance.date': 1 }, { unique: true });
 student.index({name:1,roll_no:1,class:1})
 
 const Teachers=mongoose.model('Teachers',teacher);
