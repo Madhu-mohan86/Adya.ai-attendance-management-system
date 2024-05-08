@@ -5,6 +5,11 @@ import validate_token from '../../utils/utils.js';
 const router_d_teacher = express.Router()
 
 router_d_teacher.delete('/student',(req,res)=>{
+    /* #swagger.summary = 'Delete Teacher'
+        #swagger.description= 'Delete Teacher '
+       * */
+      /*#swagger.responses[200] = { 
+    */
     try{
         let token =req.headers['secret-token'];
         if(validate_token(token)){

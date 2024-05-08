@@ -5,6 +5,11 @@ import validate_token from '../../utils/utils.js';
 const router_c_student = express.Router()
     
 router_c_student.post('/students',(req,res)=>{
+     /* #swagger.summary = 'Add Student'
+        #swagger.description= 'Add Student'
+       * */
+      /*#swagger.responses[200] = { 
+    */
     try
     {
         let token =req.headers['secret-token'];

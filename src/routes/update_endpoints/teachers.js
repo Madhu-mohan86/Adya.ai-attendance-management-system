@@ -1,10 +1,15 @@
 import express from 'express'
-import { UpdateStudent } from '../../controllers/user-crud.js'
+import { UpdateTeacher } from '../../controllers/user-crud.js'
 import validate_token from '../../utils/utils.js';
 
-const router_us_student = express.Router()
+const router_us_teacher = express.Router()
 
-router_us_student.patch('/student',(req,res)=>{
+router_us_teacher.patch('/teacher',(req,res)=>{
+     /* #swagger.summary = 'update teacher'
+        #swagger.description= 'update teacher '
+       * */
+      /*#swagger.responses[200] = { 
+    */
     try{
         let token =req.headers['secret-token'];
         if(validate_token(token)){
@@ -14,7 +19,7 @@ router_us_student.patch('/student',(req,res)=>{
         throw new Error("missing param roll_no")
     }
     const { roll_no, class_name, name } = req.query;
-    UpdateStudent(roll_no,class_name,name).then((stud)=>{
+    UpdateTeacher(roll_no,class_name,name).then((stud)=>{
         res.json({[stud]:roll_no})
     }).catch((err)=>{
         res.status(400).send(err.message)
@@ -24,4 +29,4 @@ router_us_student.patch('/student',(req,res)=>{
 }
 })
 
-export default router_us_student
+export default router_us_teacher

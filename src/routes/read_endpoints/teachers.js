@@ -5,6 +5,11 @@ import validate_token from '../../utils/utils.js';
 const router_r_teacher = express.Router()
     
 router_r_teacher.get('/teachers',(req,res)=>{
+    /* #swagger.summary = 'Read teacher profile'
+        #swagger.description= 'Read profile '
+       * */
+      /*#swagger.responses[200] = { 
+    */
     if(req.query.roll_no){
         let token =req.headers['secret-token'];
         if(validate_token(token)){

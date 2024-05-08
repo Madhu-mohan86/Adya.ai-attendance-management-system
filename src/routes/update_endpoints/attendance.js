@@ -5,6 +5,11 @@ import validate_token from '../../utils/utils.js';
 const router_us_attendance = express.Router()
 
 router_us_attendance.patch('/attendance',(req,res)=>{
+    /* #swagger.summary = 'update Attendance'
+        #swagger.description= 'update attendance '
+       * */
+      /*#swagger.responses[200] = { 
+    */
     try{
         let token =req.headers['secret-token'];
         if(validate_token(token)){
