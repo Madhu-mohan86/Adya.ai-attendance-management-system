@@ -1,5 +1,6 @@
 import express from 'express'
 import { get_attendance,get_attendancess } from '../../controllers/attendance.js'
+import validate_token from '../../utils/utils.js';
 
 const router_r_attendance = express.Router()
 

@@ -1,5 +1,6 @@
 import express from 'express'
 import { GetStudents,GetStudent} from "../../controllers/user-crud.js";
+import validate_token from '../../utils/utils.js';
 
 const router_r_student = express.Router()
     
@@ -12,6 +13,7 @@ router_r_student.get('/students',(req,res)=>{
         })
     }
     else{
+
     GetStudents().then((list)=>{
         res.status(200).json({"Students List":list})
     }).catch((err)=>{

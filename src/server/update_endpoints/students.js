@@ -1,10 +1,15 @@
 import express from 'express'
 import { UpdateStudent } from '../../controllers/user-crud.js'
+import validate_token from '../../utils/utils.js';
 
 const router_us_student = express.Router()
 
 router_us_student.patch('/student',(req,res)=>{
     try{
+        let token =req.headers['secret-token'];
+        if(validate_token(token)){
+            throw new Error("Not authorized")
+        }
     if(!req.query.roll_no){
         throw new Error("missing param roll_no")
     }

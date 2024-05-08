@@ -1,5 +1,6 @@
 import express from 'express'
 import { AddTeacher } from "../../controllers/user-crud.js";
+import validate_token from '../../utils/utils.js';
 
 
 const router_c_teacher = express.Router()
@@ -7,6 +8,10 @@ const router_c_teacher = express.Router()
 router_c_teacher.post('/teachers',(req,res)=>{
     try
     {
+        let token =req.headers['secret-token'];
+        if(validate_token(token)){
+            throw new Error("Not authorized")
+        }
         var missing_params=[]
         let name=req.body.name
         let class_name=req.body.class_name

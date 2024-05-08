@@ -1,10 +1,15 @@
 import express from 'express'
 import { remove_day_attendance } from '../../controllers/attendance.js'
+import validate_token from '../../utils/utils.js';
 
 const router_d_attendance = express.Router()
 
 router_d_attendance.delete('/attendance',(req,res)=>{
     try{
+        let token =req.headers['secret-token'];
+        if(validate_token(token)){
+            throw new Error("Not authorized")
+        }
     if(!req.query.roll_no){
         throw new Error ("roll_no param missing")
     }

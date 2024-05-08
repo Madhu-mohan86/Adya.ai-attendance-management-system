@@ -1,10 +1,15 @@
 import express from 'express'
 import { change_attendance_absent_to_present,change_attendance_present_to_absent } from '../../controllers/attendance.js'
+import validate_token from '../../utils/utils.js';
 
 const router_us_attendance = express.Router()
 
 router_us_attendance.patch('/attendance',(req,res)=>{
     try{
+        let token =req.headers['secret-token'];
+        if(validate_token(token)){
+            throw new Error("Not authorized")
+        }
         let missing_params=[]
     if(!req.query.roll_no){
         missing_params.push('roll_no')
