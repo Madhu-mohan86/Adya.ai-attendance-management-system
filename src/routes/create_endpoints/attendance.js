@@ -1,10 +1,20 @@
 import express from 'express'
 import { add_attendace_present,add_attendace_absent } from "../../controllers/attendance.js";
+import validate_token from '../../utils/utils.js';
 
 const router_c_attendance = express.Router()
 
-router_c_attendance.post('/attendance',(req,res)=>{
+router_c_attendance.post('/attendance-present',(req,res)=>{
+    /* #swagger.summary = 'Add Attendance Present'
+        #swagger.description= 'Add attendance Present to a roll_no'
+       * */
+      /*#swagger.responses[200] = { 
+    */
     try{
+        let token =req.headers['secret-token'];
+        if(validate_token(token)){
+            throw new Error("Not authorized")
+        }
         let roll_no=req.body.roll_no
         if (!roll_no) {
             throw new Error("roll_no param missing from payload")
@@ -20,8 +30,17 @@ router_c_attendance.post('/attendance',(req,res)=>{
     }
 })
 
-router_c_attendance.post('/mark-attendance-absent',(req,res)=>{
+router_c_attendance.post('/attendance-absent',(req,res)=>{
+     /* #swagger.summary = 'Add Attendance Absent'
+        #swagger.description= 'Add attendance Absent to a roll_no'
+       * */
+      /*#swagger.responses[200] = { 
+    */
     try{
+        let token =req.headers['secret-token'];
+        if(validate_token(token)){
+            throw new Error("Not authorized")
+        }
         let roll_no=req.body.roll_no
         if (!roll_no) {
             throw new Error("roll_no param missing from payload")

@@ -86,15 +86,26 @@ const change_attendance_absent_to_present=async(roll_no)=>{
         })
 }
 
-const remove_day_attendance=(roll_no)=>{
-    var today=new Date().toISOString().slice(0, 10)
-    Students.findOne({roll_no:roll_no}).then(stud=>{
+const remove_day_attendance=async(roll_no,date=null)=>{
+    try{    
+        var today=new Date().toISOString().slice(0, 10)
+        if (date!=null){
+            today=date
+        }
+   const stud= await Students.findOne({roll_no:roll_no})
         const index = stud.attendance.findIndex(a => a.date==today);
             if (index !== -1) {
                 stud.attendance.splice(index, 1);
             }
-        stud.save()
-    })
+       return stud.save().then((stud)=>{
+        return "Deleted Attendace"
+       }).catch((err)=>{
+        throw new Error("Error deleting attendance")
+       })
+    }catch(err){
+        throw new Error(err.message)
+    }
+    
 }
 
 const get_attendance=(roll_no)=>{

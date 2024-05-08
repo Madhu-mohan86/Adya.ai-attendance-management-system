@@ -9,11 +9,14 @@ import router_r_attendance from "./read_endpoints/attendance.js";
 import router_us_attendance from "./update_endpoints/attendance.js";
 import router_us_student from "./update_endpoints/students.js";
 import router_us_teacher from "./update_endpoints/teachers.js";
+import router_d_attendance from "./delet_endpoints/attendance.js";
+import router_d_student from "./delet_endpoints/students.js";
+import { MONGODB_URI } from "../utils/config_env.js";
 
 const app=express()
 app.use(express.json())
 
-mongoose.connect('mongodb://127.0.0.1:27017/adya');
+mongoose.connect(MONGODB_URI);
 const db = mongoose.connection;
 
 app.use(
@@ -25,7 +28,9 @@ app.use(
     router_r_attendance,
     router_us_attendance,
     router_us_student,
-    router_us_teacher
+    router_us_teacher,
+    router_d_attendance,
+    router_d_student
 )
 
 export default app

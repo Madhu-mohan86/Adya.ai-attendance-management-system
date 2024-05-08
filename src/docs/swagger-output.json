@@ -1,0 +1,379 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Whatsapp Monitoring",
+    "description": "Monitor whatsapp groups",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/attendance-present": {
+      "post": {
+        "summary": "Add Attendance Present",
+        "description": "Add attendance Present to a roll_no",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roll_no": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/attendance-absent": {
+      "post": {
+        "summary": "Add Attendance Absent",
+        "description": "Add attendance Absent to a roll_no",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "roll_no": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/students": {
+      "post": {
+        "summary": "Add Student",
+        "description": "Add Student",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "class_name": {
+                  "example": "any"
+                },
+                "roll_no": {
+                  "example": "any"
+                },
+                "sem_days": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "summary": "Read Student profile",
+        "description": "Read student profile ",
+        "parameters": [
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/teachers": {
+      "post": {
+        "summary": "Add Teacher",
+        "description": "Add Teacher",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "class_name": {
+                  "example": "any"
+                },
+                "roll_no": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "summary": "Read teacher profile",
+        "description": "Read profile ",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/attendance": {
+      "delete": {
+        "summary": "Delete Attendance",
+        "description": "Delete attendance ",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "summary": "Read Attendance",
+        "description": "Read attendance ",
+        "parameters": [
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "attendance_status",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/student": {
+      "delete": {
+        "summary": "Delete Teacher",
+        "description": "Delete Teacher ",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "summary": "update student",
+        "description": "update student ",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "class_name",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/teacher": {
+      "patch": {
+        "summary": "update teacher",
+        "description": "update teacher ",
+        "parameters": [
+          {
+            "name": "secret-token",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "roll_no",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "class_name",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  }
+}
