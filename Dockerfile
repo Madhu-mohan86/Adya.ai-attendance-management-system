@@ -13,5 +13,6 @@ ENV SECRET_TOKEN=trial
 ENV PORT=3002
 
 ENV HOST=0.0.0.0
+RUN ["node","./src/docs/swagger_gen.js"]
 
 CMD ["node","./src/main.js"]

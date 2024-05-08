@@ -1,6 +1,7 @@
 import swaggerAutogen from "swagger-autogen";
 import{dirname} from "path";
 import { fileURLToPath } from 'url';
+import { HOST, PORT } from "../utils/config_env.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const dir_name = dirname(__filename);
@@ -13,7 +14,7 @@ const doc = {
     title: 'Attendance Monitoring',
     description: 'Monitor attendance of students by teachers'
   },
-  host: 'localhost:3000'
+  host: `${HOST}:${PORT}`
 };
 
 const outputFile = './swagger-output.json';
