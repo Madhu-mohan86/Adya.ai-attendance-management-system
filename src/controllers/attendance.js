@@ -87,14 +87,16 @@ const remove_day_attendance=(roll_no)=>{
     })
 }
 
-const get_attendances=(roll_no)=>{
-    return Students.findOne({roll_no:roll_no}).then(stud=>{
-        var list=[]
-        stud.attendance.forEach(el=>{
-            list.append(el)
-        })
-        return list
+const get_attendance=(roll_no)=>{
+    return Students.findOne({roll_no:roll_no},{_id:0,name:0,class:0,total_days:0,__v:0}).then(stud=>{
+        return stud
      })
 }
 
-export {add_attendace_absent,add_attendace_present,percentage_calculate,get_attendances,remove_day_attendance,change_attendance_absent_to_present,change_attendance_present_to_absent}
+const get_attendancess=(roll_no)=>{
+    return Students.find({},{_id:0,name:0,class:0,total_days:0,__v:0}).then(stud=>{
+       return stud
+     })
+}
+
+export {add_attendace_absent,add_attendace_present,percentage_calculate,remove_day_attendance,change_attendance_absent_to_present,change_attendance_present_to_absent,get_attendance,get_attendancess}

@@ -4,7 +4,7 @@ import { AddTeacher } from "../../controllers/user-crud.js";
 
 const router_c_teacher = express.Router()
     
-router_c_teacher.post('/add-teacher',(req,res)=>{
+router_c_teacher.post('/teachers',(req,res)=>{
     try
     {
         var missing_params=[]

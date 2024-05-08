@@ -3,7 +3,7 @@ import { AddStudent } from "../../controllers/user-crud.js";
 
 const router_c_student = express.Router()
     
-router_c_student.post('/add-student',(req,res)=>{
+router_c_student.post('/students',(req,res)=>{
     try
     {
         var missing_params=[]

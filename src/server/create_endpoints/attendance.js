@@ -3,7 +3,7 @@ import { add_attendace_present,add_attendace_absent } from "../../controllers/at
 
 const router_c_attendance = express.Router()
 
-router_c_attendance.post('/mark-attendance-present',(req,res)=>{
+router_c_attendance.post('/attendance',(req,res)=>{
     try{
         let roll_no=req.body.roll_no
         if (!roll_no) {

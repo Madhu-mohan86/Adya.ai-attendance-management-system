@@ -68,5 +68,45 @@ const UpdateStudent=(roll_no,class_name=null,name=null)=>{
     existingTeacher.save()
 }
 
+const GetStudents = () => {
+    try{
+    return Students.find({},{_id:0,__v:0}).then((list)=>{
+        return list
+    })
+    }catch{
+        throw new Error("Error in getting list of Students")
+    }
+};
+const GetStudent = (roll_no) => {
+    try{
+    return Students.findOne({roll_no:roll_no},{_id:0,__v:0}).then((list)=>{
+        return list
+    })
+    }catch{
+        throw new Error("Error in getting list of Students")
+    }
+};
 
-export {AddStudent,AddTeacher,RemoveStudent,RemoveTeacher,UpdateTeacher,UpdateStudent}
+
+const GetTeachers = () => {
+    try{
+        return Teachers.find({},{_id:0,__v:0}).then((list)=>{
+            return list
+        })
+        }catch{
+            throw new Error("Error in getting list of Teachers")
+        }
+};
+
+const GetTeacher = (roll_no) => {
+    try{
+    return Teachers.findOne({roll_no:roll_no},{_id:0,__v:0}).then((list)=>{
+        return list
+    })
+    }catch{
+        throw new Error("Error in getting list of Teachers")
+    }
+};
+
+
+export {AddStudent,AddTeacher,RemoveStudent,RemoveTeacher,UpdateTeacher,UpdateStudent,GetStudents,GetTeachers,GetStudent,GetTeacher}
