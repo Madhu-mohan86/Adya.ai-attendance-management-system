@@ -43,12 +43,28 @@ const AddTeacher = (name, studentClass, roll_no) => {
         });
 };
 
-const RemoveStudent = (roll_no) => {
-    Students.findOneAndDelete({roll_no:roll_no})
+const RemoveStudent = async(roll_no) => {
+    try{
+    return Students.findOneAndDelete({roll_no:roll_no}).then(()=>{
+        return "Deleted"
+    }).catch((err)=>{
+        throw new Error ("Error in Deleting Student Profile")
+    })
+}catch(err){
+    throw new Error(err.message)
+}
 };
 
 const RemoveTeacher = ( roll_no) => {
-    Teachers.findOneAndDelete({roll_no:roll_no})
+    try{
+        return Teachers.findOneAndDelete({roll_no:roll_no}).then(()=>{
+            return "Deleted"
+        }).catch((err)=>{
+            throw new Error ("Error in Deleting Teacher Profile")
+        })
+    }catch(err){
+        throw new Error(err.message)
+    }
 };
 
 const UpdateTeacher=async(roll_no,class_name=null,name=null)=>{
