@@ -1,6 +1,6 @@
 # Attendance Management App with Docker
 
-This repository contains an attendance management application that can be run using Docker for easy deployment and scalability. It is Uploaded to Docker Hub in https://hub.docker.com/u/madhu86/attendance_management
+This repository contains an attendance management application that can be run using Docker for easy deployment and scalability. It is Uploaded to Docker Hub in https://hub.docker.com/r/madhu86/attendance_management
 
 
 ## Run Locally
